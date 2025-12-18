@@ -1,0 +1,350 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Fusion-specific colors */
+  --fusion-blue: hsl(217, 91%, 60%);
+  --fusion-dark: hsl(215, 28%, 17%);
+  --fusion-darker: hsl(218, 23%, 9%);
+  --fusion-gray: hsl(215, 14%, 34%);
+  --fusion-light-gray: hsl(215, 12%, 54%);
+}
+
+.dark {
+  --background: hsl(220, 13%, 18%);
+  --foreground: hsl(210, 20%, 98%);
+  --muted: hsl(220, 13%, 25%);
+  --muted-foreground: hsl(220, 9%, 65%);
+  --popover: hsl(220, 13%, 18%);
+  --popover-foreground: hsl(210, 20%, 98%);
+  --card: hsl(220, 13%, 18%);
+  --card-foreground: hsl(210, 20%, 98%);
+  --border: hsl(220, 13%, 30%);
+  --input: hsl(220, 13%, 30%);
+  --primary: hsl(217, 91%, 60%);
+  --primary-foreground: hsl(210, 20%, 98%);
+  --secondary: hsl(220, 13%, 25%);
+  --secondary-foreground: hsl(210, 20%, 98%);
+  --accent: hsl(220, 13%, 25%);
+  --accent-foreground: hsl(210, 20%, 98%);
+  --destructive: hsl(0, 62.8%, 50%);
+  --destructive-foreground: hsl(210, 20%, 98%);
+  --ring: hsl(217, 91%, 60%);
+  --radius: 0.5rem;
+  
+  /* Better Fusion dark mode colors */
+  --fusion-blue: hsl(217, 91%, 60%);
+  --fusion-dark: hsl(220, 13%, 18%);
+  --fusion-darker: hsl(220, 13%, 15%);
+  --fusion-gray: hsl(220, 13%, 25%);
+  --fusion-light-gray: hsl(220, 9%, 65%);
+}
+
+/* Force dark mode for all select components */
+.dark [role="listbox"] {
+  background-color: hsl(220, 13%, 18%) !important;
+  border-color: hsl(220, 13%, 30%) !important;
+  color: hsl(210, 20%, 98%) !important;
+}
+
+.dark [role="option"] {
+  background-color: hsl(220, 13%, 18%) !important;
+  color: hsl(210, 20%, 98%) !important;
+}
+
+.dark [role="option"]:hover {
+  background-color: hsl(220, 13%, 25%) !important;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  /* Monaco Editor custom styling */
+  .monaco-editor {
+    @apply rounded-lg;
+  }
+
+  /* Custom scrollbar for dark theme */
+  .dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground rounded;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-300;
+  }
+}
+
+/* Utility classes for Fusion theme colors */
+.bg-fusion-blue {
+  background-color: var(--fusion-blue);
+}
+
+.bg-fusion-dark {
+  background-color: var(--fusion-dark);
+}
+
+.bg-fusion-darker {
+  background-color: var(--fusion-darker);
+}
+
+.bg-fusion-gray {
+  background-color: var(--fusion-gray);
+}
+
+.text-fusion-blue {
+  color: var(--fusion-blue);
+}
+
+.text-fusion-light-gray {
+  color: var(--fusion-light-gray);
+}
+
+.border-fusion-gray {
+  border-color: var(--fusion-gray);
+}
+
+/* Status indicator animations */
+@keyframes pulse-success {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-success {
+  animation: pulse-success 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  border: 2px solid var(--fusion-gray);
+  border-top: 2px solid var(--fusion-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced scrolling for results table - SQL Developer style */
+.results-table-container {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: auto;
+  scrollbar-color: rgba(120, 120, 120, 0.8) rgba(240, 240, 240, 0.3);
+  position: relative;
+  /* Force both scrollbars to be always visible, fixed, and draggable */
+  overflow-x: scroll !important;
+  overflow-y: scroll !important;
+  scrollbar-gutter: stable both-edges;
+  /* Ensure scrollbars are fixed in position */
+  scrollbar-width: 16px;
+}
+
+/* Frozen headers CSS - Enhanced for SQL Developer behavior */
+.table-header-container {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 40 !important;
+  background: rgba(248, 249, 250, 0.98) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 2px solid rgba(200, 200, 200, 0.8) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark .table-header-container {
+  background: rgba(30, 41, 59, 0.98) !important;
+  border-bottom: 2px solid rgba(100, 116, 139, 0.8) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.frozen-column-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 39 !important;
+  background: inherit !important;
+}
+
+/* Ensure dropdowns appear above frozen headers */
+[data-radix-popper-content-wrapper],
+[data-radix-dropdown-menu-content],
+.dropdown-menu-content {
+  z-index: 50 !important;
+}
+
+.dark .results-table-container {
+  scrollbar-color: rgba(180, 180, 180, 0.8) rgba(60, 60, 60, 0.3);
+}
+
+/* Always visible and fixed scrollbars like SQL Developer */
+.results-table-container::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+  background: rgba(240, 240, 240, 0.9);
+  display: block !important;
+  /* Force scrollbars to always appear, be fixed, and draggable */
+  -webkit-appearance: none;
+  position: sticky;
+}
+
+/* Force vertical scrollbar to be fixed at right edge */
+.results-table-container::-webkit-scrollbar:vertical {
+  width: 16px;
+  background: rgba(240, 240, 240, 0.9);
+  display: block !important;
+  position: sticky;
+  right: 0;
+}
+
+/* Force horizontal scrollbar to be fixed at bottom edge */
+.results-table-container::-webkit-scrollbar:horizontal {
+  height: 16px;
+  background: rgba(240, 240, 240, 0.9);
+  display: block !important;
+  position: sticky;
+  bottom: 0;
+}
+
+
+
+.dark .results-table-container::-webkit-scrollbar {
+  background: rgba(60, 60, 60, 0.9);
+}
+
+.dark .results-table-container::-webkit-scrollbar:vertical {
+  background: rgba(60, 60, 60, 0.9);
+  position: sticky;
+  right: 0;
+}
+
+.dark .results-table-container::-webkit-scrollbar:horizontal {
+  background: rgba(60, 60, 60, 0.9);
+  position: sticky;
+  bottom: 0;
+}
+
+.results-table-container::-webkit-scrollbar-track {
+  background: rgba(220, 220, 220, 0.7);
+  border-radius: 2px;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  /* Fixed track positioning */
+  position: relative;
+}
+
+.dark .results-table-container::-webkit-scrollbar-track {
+  background: rgba(80, 80, 80, 0.6);
+  border-radius: 3px;
+  border: 1px solid rgba(120, 120, 120, 0.4);
+}
+
+.results-table-container::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 1);
+  border-radius: 2px;
+  border: 1px solid rgba(240, 240, 240, 0.3);
+  min-height: 40px;
+  min-width: 40px;
+  /* Ensure thumb is always visible, fixed, and draggable */
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.dark .results-table-container::-webkit-scrollbar-thumb {
+  background: rgba(180, 180, 180, 0.9);
+  border-radius: 3px;
+  border: 1px solid rgba(60, 60, 60, 0.4);
+}
+
+.results-table-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(80, 80, 80, 1);
+}
+
+.dark .results-table-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 200, 200, 1);
+}
+
+.results-table-container::-webkit-scrollbar-corner {
+  background: rgba(240, 240, 240, 0.8);
+  border: 1px solid rgba(200, 200, 200, 0.4);
+}
+
+.dark .results-table-container::-webkit-scrollbar-corner {
+  background: rgba(60, 60, 60, 0.8);
+  border: 1px solid rgba(120, 120, 120, 0.4);
+}
+
+/* Fixed table layout for consistent scrollbars */
+.fixed-data-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.fixed-table-wrapper {
+  position: relative;
+  height: 100%;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  /* Force both scrollbars to always be visible */
+  overflow-x: scroll !important;
+  overflow-y: scroll !important;
+  /* Ensure scrollbars are always visible */
+  scrollbar-width: auto;
+  scrollbar-gutter: stable both-edges;
+}
+
+/* Alternative approach for forcing vertical scrollbar */
+.fixed-table-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: calc(100% + 1px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dark .fixed-table-wrapper {
+  border: 1px solid rgba(120, 120, 120, 0.3);
+}

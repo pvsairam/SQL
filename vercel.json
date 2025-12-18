@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "buildCommand": "npx vite build",
+  "outputDirectory": "dist/public",
+  "installCommand": "npm install",
+  "functions": {
+    "api/test-connection.ts": {
+      "runtime": "nodejs18.x"
+    },
+    "api/run-fusion-query.ts": {
+      "runtime": "nodejs18.x"
+    },
+    "api/health.ts": {
+      "runtime": "nodejs18.x"
+    },
+    "api/hello.ts": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
