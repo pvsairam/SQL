@@ -1,0 +1,91 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Production builds
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.example
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
+
+# Database
+*.db
+*.sqlite
+
+# Coverage reports
+coverage/
+
+# Package archives
+*.tar.gz
+*.zip
+
+# Cache
+.cache/
+
+# Attached assets (screenshots and images from development)
+attached_assets/
+
+# Replit specific files - exclude from GitHub
+.replit
+replit.nix
+replit.md
+.config/
+.cache/
+.local/
+
+# Deployment directories (use main project instead)
+fusionsql-deploy/
+fusionsql-vercel-ready/
+fusionsql-vercel-fixed-runtime/
+
+# Standalone example files (code already exists in project)
+complete-fusion-query-project.zip
+fusion-query-package.zip
+package-dependencies.json
+frontend-table-components.js
+frontend-table-display.tsx
+schemas-and-types.ts
+server-routes-complete.ts
+usage-example.js
+
+# Misc
+1754009941806_1754009941806
+
+# VSIX files (built artifacts)
+*.vsix
+
+# Backup files
+*.backup
+
+# Duplicate source directory (use oracle-fusion-sql-extension instead)
+src/

@@ -1,0 +1,101 @@
+{
+  "name": "oracle-fusion-sql",
+  "displayName": "Oracle Fusion SQL Developer",
+  "description": "Professional SQL Developer for Oracle Fusion Cloud",
+  "version": "0.0.44",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:oracle-fusion-sql.openWorksheet",
+    "onCommand:oracle-fusion-sql.addConnection",
+    "onView:oracle-connections"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "oracle-fusion-sql.openWorksheet",
+        "title": "Open SQL Worksheet",
+        "category": "Oracle Fusion"
+      },
+      {
+        "command": "oracle-fusion-sql.addConnection",
+        "title": "Add Connection",
+        "category": "Oracle Fusion",
+        "icon": "$(add)"
+      },
+      {
+        "command": "oracle-fusion-sql.testConnection",
+        "title": "Test Connection",
+        "category": "Oracle Fusion",
+        "icon": "$(play)"
+      },
+      {
+        "command": "oracle-fusion-sql.deleteConnection",
+        "title": "Delete Connection",
+        "category": "Oracle Fusion",
+        "icon": "$(trash)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "oracle-fusion-explorer",
+          "title": "Oracle Fusion",
+          "icon": "$(database)"
+        }
+      ]
+    },
+    "views": {
+      "oracle-fusion-explorer": [
+        {
+          "id": "oracle-connections",
+          "name": "Connections",
+          "when": "true"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "oracle-fusion-sql.addConnection",
+          "when": "view == oracle-connections",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "oracle-fusion-sql.testConnection",
+          "when": "view == oracle-connections && viewItem == connection",
+          "group": "inline"
+        },
+        {
+          "command": "oracle-fusion-sql.deleteConnection",
+          "when": "view == oracle-connections && viewItem == connection",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map"
+  },
+  "dependencies": {
+    "axios": "^1.11.0",
+    "fast-xml-parser": "^5.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/vscode": "^1.103.0",
+    "@vscode/vsce": "^3.6.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.9.2",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1"
+  }
+}
